@@ -1,0 +1,5 @@
+thorntail:
+  http:
+    port: @servlet.port@
+  context:
+    path: /wap/holiday

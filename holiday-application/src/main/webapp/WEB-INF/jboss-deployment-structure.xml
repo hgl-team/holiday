@@ -1,0 +1,19 @@
+<jboss-deployment-structure xmlns="urn:jboss:deployment-structure:1.3"
+                            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                            xsi:schemaLocation="urn:jboss:deployment-structure:1.3 urn:jboss:deployment-structure:1.3">
+    <deployment>
+        <exclude-subsystems>
+            <subsystem name="org.hibernate"/>
+            <subsystem name="org.hibernate.validator"/>
+            <subsystem name="weld"/>
+            <subsystem name="jpa"/>
+            <subsystem name="transactions"/>
+        </exclude-subsystems>
+        <exclusions>
+            <module name="org.hibernate"/>
+            <module name="org.hibernate.validator"/>
+            <module name="org.jboss.as.transactions"/>
+            <module name="javaee.api"/>
+        </exclusions>
+    </deployment>
+</jboss-deployment-structure>

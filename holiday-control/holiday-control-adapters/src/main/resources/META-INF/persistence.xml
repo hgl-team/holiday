@@ -1,0 +1,18 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             version="2.2"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+    <persistence-unit name="holidayPU" transaction-type="RESOURCE_LOCAL">
+
+        <!-- <mapping-file>META-INF/mappings/path/to/class.orm.xml</mapping-file> -->
+        <mapping-file>META-INF/db/mappings/org/hgl/service/holiday/model/domain/holiday.orm.xml</mapping-file>
+
+        <properties>
+            <property name="javax.persistence.schema-generation.database.action" value="none"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL10Dialect"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.proc.param_null_passing" value="true"/>
+        </properties>
+    </persistence-unit>
+</persistence>

@@ -1,0 +1,20 @@
+application:
+  environment: @cloud.profile@
+  root-context: /wap/holiday
+spring:
+  application:
+    name: holiday
+  profiles:
+    active: @cloud.profile@
+  http:
+    converters:
+      preferred-json-mapper: gson
+  flyway:
+    schemas: [ holiday ]
+    locations:
+      - "classpath:META-INF/db/migration"
+    default-schema: holiday
+server:
+  port: @servlet.port@
+  servlet:
+    context-path: /wap/holiday
