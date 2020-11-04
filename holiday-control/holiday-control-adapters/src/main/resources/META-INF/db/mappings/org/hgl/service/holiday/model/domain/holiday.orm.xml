@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<entity-mappings xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+                 version="2.2"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm http://xmlns.jcp.org/xml/ns/persistence/orm_2_2.xsd">
+    <named-query name="Holiday.getForCountry">
+        <query><![CDATA[
+            SELECT h
+            FROM Holiday h
+            WHERE h.countryCode = :pCountryCode
+                AND h.active = true
+        ]]></query>
+    </named-query>
+    <entity class="org.hgl.service.holiday.model.domain.Holiday" access="FIELD">
+        <table name="holiday" schema="holiday"/>
+        <attributes>
+            <id name="id">
+                <column name="id" column-definition="int"/>
+                <generated-value strategy="IDENTITY"/>
+            </id>
+            <basic name="description">
+                <column name="description" column-definition="text"/>
+            </basic>
+            <basic name="countryCode">
+                <column name="country_code" column-definition="varchar(10)"/>
+            </basic>
+            <basic name="method">
+                <column name="method" column-definition="varchar(100)"/>
+                <convert converter="org.hgl.service.holiday.model.converter.HolidayCalculationMethodNameConverter"/>
+            </basic>
+            <basic name="argument">
+                <column name="argument" column-definition="json"/>
+            </basic>
+            <basic name="active">
+                <column name="active" column-definition="boolean"/>
+            </basic>
+        </attributes>
+    </entity>
+</entity-mappings>

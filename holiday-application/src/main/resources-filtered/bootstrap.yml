@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    config:
+      uri: @cloud.config.url@
+      label: @cloud.config.label@
+      enabled: true
+      name: holiday
+      profile: @cloud.profile@
+      fail-fast: true
+      retry:
+        max-attempts: 20
+  application:
+    name: holiday
