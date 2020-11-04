@@ -1,7 +1,7 @@
 FROM openjdk:11-slim
 USER root
 RUN mkdir /opt/application
-COPY target/@project.name@.war /opt/application/@project.name@.war
+COPY target/holiday.war /opt/application/holiday.war
 
 # Fix Timezone
 RUN rm -rf /etc/localtime
@@ -23,4 +23,4 @@ RUN addgroup spring && adduser --ingroup spring spring
 USER spring:spring
 EXPOSE @servlet.port@/tcp
 EXPOSE @servlet.port@/udp
-ENTRYPOINT ["java", "-jar", "/opt/application/@project.name@.war"]
+ENTRYPOINT ["java", "-jar", "/opt/application/holiday.war"]
