@@ -24,19 +24,6 @@ public class JpaConfiguration {
     private static final Logger log = LoggerFactory.getLogger(JpaConfiguration.class);
     public static final String PERSISTENCE_UNIT_NAME = "holidayPU";
 
-    @Bean("applicationDatasource")
-    public DataSource dataSource (DataSourceInformation dataSourceInformation) {
-        log.info("Datasource initialized: {}", dataSourceInformation);
-        DriverManagerDataSource datasource = new DriverManagerDataSource();
-
-        datasource.setDriverClassName(dataSourceInformation.getDriverClassName());
-        datasource.setUrl(dataSourceInformation.getUrl());
-        datasource.setUsername(dataSourceInformation.getUsername());
-        datasource.setPassword(dataSourceInformation.getPassword());
-
-        return datasource;
-    }
-
     @Bean(initMethod = "migrate")
     @Primary
     @DependsOn("applicationDatasource")

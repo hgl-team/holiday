@@ -25,20 +25,4 @@ public class FlywayConfiguration {
     private String[] locations;
     private String[] schemas;
     private String defaultSchema;
-
-    public FlywayConfiguration(Environment environment) {
-        List<String> properties = Parametrization.getPropertyNames(environment)
-                .filter(s -> s.matches(SPRING_FLYWAY))
-                .collect(Collectors.toList());
-
-        schemas = properties.stream()
-                .filter(s -> s.matches(SPRING_FLYWAY_SCHEMAS))
-                .map(environment::getProperty)
-                .toArray(String[]::new);
-        locations = properties.stream()
-                .filter(s -> s.matches(SPRING_FLYWAY_LOCATIONS))
-                .map(environment::getProperty)
-                .toArray(String[]::new);
-        defaultSchema = environment.getProperty(SPRING_FLYWAY_DEFAULT_SCHEMA, "");
-    }
 }

@@ -103,8 +103,13 @@
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-config-client</artifactId>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.jlhuerfanor</groupId>
+            <artifactId>remote-config-core</artifactId>
         </dependency>
 
         <dependency>
@@ -189,6 +194,14 @@
             </resource>
         </resources>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <forceJavacCompilerUse>true</forceJavacCompilerUse>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
@@ -394,6 +407,43 @@
                                     <goal>stop</goal>
                                     <goal>build</goal>
                                     <goal>start</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>wildfly</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.wildfly.plugins</groupId>
+                        <artifactId>wildfly-maven-plugin</artifactId>
+                        <version>2.0.2.Final</version>
+                        <configuration>
+                            <hostname>${wildfly.server.hostname}</hostname>
+                            <port>${wildfly.server.port}</port>
+                            <username>${wildfly.server.username}</username>
+                            <password>${wildfly.server.password}</password>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>undeploy-artifact</id>
+                                <phase>clean</phase>
+                                <goals>
+                                    <goal>undeploy</goal>
+                                </goals>
+                                <configuration>
+                                    <ignoreMissingDeployment>true</ignoreMissingDeployment>
+                                </configuration>
+                            </execution>
+                            <execution>
+                                <id>deploy-artifact</id>
+                                <phase>install</phase>
+                                <goals>
+                                    <goal>deploy</goal>
                                 </goals>
                             </execution>
                         </executions>
