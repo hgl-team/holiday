@@ -16,7 +16,7 @@
     <servlet.port>51500</servlet.port>
     <docker.port>51500</docker.port>
     <docker.image.name>${project.name}</docker.image.name>
-    <cloud.config.url>https://dev.lujociclas.com/infrastructura/configuracion</cloud.config.url>
+    <cloud.config.url>https://dev.lujociclas.com/wap/configuracion</cloud.config.url>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -228,7 +228,7 @@
       <properties>
         <cloud.profile>production</cloud.profile>
         <cloud.config.label>latest</cloud.config.label>
-        <cloud.config.url>https://ns.lujociclas.com/infrastructura/configuracion</cloud.config.url>
+        <cloud.config.url>https://ns.lujociclas.com/wap/configuracion</cloud.config.url>
         <docker.host>http://ns.lujociclas.com:2375</docker.host>
       </properties>
     </profile>
