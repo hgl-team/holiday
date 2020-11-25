@@ -17,6 +17,8 @@ public class DataSourceInformation implements Serializable {
     private String url;
     private String username;
     private String password;
+    private String jndiName;
+    private boolean isJndi;
 
     @Override
     public String toString() {

@@ -42,13 +42,11 @@
         <artifactId>spring-security-oauth2</artifactId>
         <version>2.5.0.RELEASE</version>
       </dependency>
-      <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies -->
+      <!-- https://dev.lujociclas.com/archiva/#artifact/com.github.jlhuerfanor/remote-config-core/1.0.0 -->
       <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-dependencies</artifactId>
-        <version>Hoxton.SR6</version>
-        <type>pom</type>
-        <scope>import</scope>
+        <groupId>com.github.jlhuerfanor</groupId>
+        <artifactId>remote-config-core</artifactId>
+        <version>1.0.0</version>
       </dependency>
       <!-- https://mvnrepository.com/artifact/org.springframework.retry/spring-retry -->
       <dependency>
@@ -207,12 +205,18 @@
     <profile>
       <id>develop</id>
       <properties>
+        <servlet.port>51200</servlet.port>
         <cloud.profile>develop</cloud.profile>
         <cloud.config.label>latest</cloud.config.label>
+
         <docker.host>http://192.168.1.67:2375</docker.host>
-        <servlet.port>51200</servlet.port>
         <docker.port>51200</docker.port>
         <docker.image.name>${project.name}-dev</docker.image.name>
+
+        <wildfly.server.hostname>dev.lujociclas.com</wildfly.server.hostname>
+        <wildfly.server.port>10041</wildfly.server.port>
+        <wildfly.server.username>mvndeploy</wildfly.server.username>
+        <wildfly.server.password>BvJxm2YxfDJbybllpEF5</wildfly.server.password>
       </properties>
     </profile>
     <profile>
@@ -221,6 +225,11 @@
         <cloud.profile>local</cloud.profile>
         <cloud.config.label>latest</cloud.config.label>
         <docker.host>unix:///var/run/docker.sock</docker.host>
+
+        <wildfly.server.hostname>localhost</wildfly.server.hostname>
+        <wildfly.server.port>9990</wildfly.server.port>
+        <wildfly.server.username>mvndeploy</wildfly.server.username>
+        <wildfly.server.password>XKBMWsmJDZXM2siHM27k</wildfly.server.password>
       </properties>
     </profile>
     <profile>
@@ -230,6 +239,11 @@
         <cloud.config.label>latest</cloud.config.label>
         <cloud.config.url>https://ns.lujociclas.com/wap/configuracion</cloud.config.url>
         <docker.host>http://ns.lujociclas.com:2375</docker.host>
+
+        <wildfly.server.hostname>ns.lujociclas.com</wildfly.server.hostname>
+        <wildfly.server.port>10040</wildfly.server.port>
+        <wildfly.server.username>mvndeploy</wildfly.server.username>
+        <wildfly.server.password>DmFgaH9SheBGlBaOE6Ef</wildfly.server.password>
       </properties>
     </profile>
   </profiles>

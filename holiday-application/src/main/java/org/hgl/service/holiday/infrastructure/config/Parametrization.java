@@ -2,20 +2,17 @@ package org.hgl.service.holiday.infrastructure.config;
 
 import org.hgl.service.holiday.infrastructure.jpa.DataSourceInformation;
 import org.hgl.service.holiday.infrastructure.jpa.FlywayConfiguration;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.env.AbstractEnvironment;
-import org.springframework.core.env.EnumerablePropertySource;
-import org.springframework.core.env.Environment;
 
 import java.time.ZoneId;
-import java.util.Arrays;
-import java.util.stream.Stream;
 
 @Configuration
 public class Parametrization {
+    private static final Logger log = LoggerFactory.getLogger(Parametrization.class);
 
     @Bean("systemZoneId")
     public ZoneId systemZoneId(
@@ -28,26 +25,30 @@ public class Parametrization {
             @Value("${application.datasource.driver}") String driverClassName,
             @Value("${application.datasource.url}") String url,
             @Value("${application.datasource.username}") String username,
-            @Value("${application.datasource.password}") String password) {
+            @Value("${application.datasource.password}") String password,
+            @Value("${application.datasource.is-jndi}") Boolean isJndi,
+            @Value("${application.datasource.jndi-name}") String jndiName) {
         return DataSourceInformation.builder()
                 .driverClassName(driverClassName)
                 .url(url)
                 .username(username)
                 .password(password)
+                .isJndi(Boolean.TRUE.equals(isJndi))
+                .jndiName(jndiName)
                 .build();
     }
 
     @Bean
-    public FlywayConfiguration flywayConfiguration(ApplicationContext context) {
-        return new FlywayConfiguration(context.getEnvironment());
-    }
+    public FlywayConfiguration flywayConfiguration(
+            @Value("${spring.flyway.default-schema}") String defaultSchema,
+            @Value("${spring.flyway.schemas}") String schemas,
+            @Value("${spring.flyway.locations}") String locations) {
+        log.info("\nSchemas: {}\nLocations: {}\ndefault-schema: {}", schemas, locations, defaultSchema);
 
-    public static Stream<String> getPropertyNames(Environment env) {
-        return ((AbstractEnvironment)env).getPropertySources().stream()
-                .filter(EnumerablePropertySource.class::isInstance)
-                .map(EnumerablePropertySource.class::cast)
-                .map(EnumerablePropertySource::getPropertyNames)
-                .flatMap(Arrays::stream)
-                .distinct();
+        return FlywayConfiguration.builder()
+                .schemas(schemas.split(","))
+                .locations(locations.split(","))
+                .defaultSchema(defaultSchema)
+                .build();
     }
 }
