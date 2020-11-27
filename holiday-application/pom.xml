@@ -415,32 +415,59 @@
             </build>
         </profile>
         <profile>
-            <id>wildfly</id>
+            <id>tomcat</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                    <scope>compile</scope>
+                </dependency>
+                <!-- https://mvnrepository.com/artifact/org.slf4j/jul-to-slf4j -->
+                <dependency>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>jul-to-slf4j</artifactId>
+                    <version>1.7.30</version>
+                </dependency>
+                <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl -->
+                <dependency>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-slf4j-impl</artifactId>
+                    <version>2.14.0</version>
+                </dependency>
+                <!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-jcl -->
+                <dependency>
+                    <groupId>org.apache.logging.log4j</groupId>
+                    <artifactId>log4j-jcl</artifactId>
+                    <version>2.14.0</version>
+                </dependency>
+            </dependencies>
             <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/resources-tomcat</directory>
+                        <filtering>true</filtering>
+                    </resource>
+                </resources>
                 <plugins>
                     <plugin>
-                        <groupId>org.wildfly.plugins</groupId>
-                        <artifactId>wildfly-maven-plugin</artifactId>
-                        <version>2.0.2.Final</version>
+                        <groupId>org.apache.tomcat.maven</groupId>
+                        <artifactId>tomcat7-maven-plugin</artifactId>
+                        <version>2.2</version>
                         <configuration>
-                            <hostname>${wildfly.server.hostname}</hostname>
-                            <port>${wildfly.server.port}</port>
-                            <username>${wildfly.server.username}</username>
-                            <password>${wildfly.server.password}</password>
+                            <url>${tomcat.url}</url>
+                            <server>${tomcat.server.id}</server>
+                            <path>/wap/holiday</path>
                         </configuration>
                         <executions>
                             <execution>
-                                <id>undeploy-artifact</id>
+                                <id>undeploy</id>
                                 <phase>clean</phase>
                                 <goals>
                                     <goal>undeploy</goal>
                                 </goals>
-                                <configuration>
-                                    <ignoreMissingDeployment>true</ignoreMissingDeployment>
-                                </configuration>
                             </execution>
                             <execution>
-                                <id>deploy-artifact</id>
+                                <id>deploy</id>
                                 <phase>install</phase>
                                 <goals>
                                     <goal>deploy</goal>
