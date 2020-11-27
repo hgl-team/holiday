@@ -213,10 +213,9 @@
         <docker.port>51200</docker.port>
         <docker.image.name>${project.name}-dev</docker.image.name>
 
-        <wildfly.server.hostname>dev.lujociclas.com</wildfly.server.hostname>
-        <wildfly.server.port>10041</wildfly.server.port>
-        <wildfly.server.username>mvndeploy</wildfly.server.username>
-        <wildfly.server.password>BvJxm2YxfDJbybllpEF5</wildfly.server.password>
+        <tomcat.url>https://dev.lujociclas.com/manager/text</tomcat.url>
+        <tomcat.server.id>tomcat-develop-server</tomcat.server.id>
+        <tomcat.catalina.base>/usr/local/tomcat</tomcat.catalina.base>
       </properties>
     </profile>
     <profile>
@@ -226,10 +225,8 @@
         <cloud.config.label>latest</cloud.config.label>
         <docker.host>unix:///var/run/docker.sock</docker.host>
 
-        <wildfly.server.hostname>localhost</wildfly.server.hostname>
-        <wildfly.server.port>9990</wildfly.server.port>
-        <wildfly.server.username>mvndeploy</wildfly.server.username>
-        <wildfly.server.password>XKBMWsmJDZXM2siHM27k</wildfly.server.password>
+        <tomcat.url>http://localhost:8080/manager/text</tomcat.url>
+        <tomcat.server.id>tomcat-local-server</tomcat.server.id>
       </properties>
     </profile>
     <profile>
@@ -240,10 +237,9 @@
         <cloud.config.url>https://ns.lujociclas.com/wap/configuracion</cloud.config.url>
         <docker.host>http://ns.lujociclas.com:2375</docker.host>
 
-        <wildfly.server.hostname>ns.lujociclas.com</wildfly.server.hostname>
-        <wildfly.server.port>10040</wildfly.server.port>
-        <wildfly.server.username>mvndeploy</wildfly.server.username>
-        <wildfly.server.password>DmFgaH9SheBGlBaOE6Ef</wildfly.server.password>
+        <tomcat.url>https://ns.lujociclas.com/manager/text</tomcat.url>
+        <tomcat.server.id>tomcat-prod-server</tomcat.server.id>
+        <tomcat.catalina.base>/opt/apache/tomcat-prod</tomcat.catalina.base>
       </properties>
     </profile>
   </profiles>
