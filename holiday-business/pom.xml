@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.hgl.service</groupId>
+        <groupId>org.hglteam.service</groupId>
         <artifactId>holiday</artifactId>
         <version>1.0.1-SNAPSHOT</version>
     </parent>
@@ -10,15 +10,17 @@
     <packaging>jar</packaging>
     <dependencies>
         <dependency>
-            <groupId>org.hgl.service</groupId>
+            <groupId>org.hglteam.service</groupId>
             <artifactId>holiday-model-domain</artifactId>
             <version>1.0.1-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
         
         <dependency>
-            <groupId>org.hgl.service</groupId>
+            <groupId>org.hglteam.service</groupId>
             <artifactId>holiday-control-definitions</artifactId>
             <version>1.0.1-SNAPSHOT</version>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>
@@ -27,8 +29,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.hgl</groupId>
+            <groupId>org.hglteam</groupId>
             <artifactId>convertion-api</artifactId>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>

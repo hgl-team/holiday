@@ -11,7 +11,7 @@
                 AND h.active = true
         ]]></query>
     </named-query>
-    <entity class="org.hgl.service.holiday.model.domain.Holiday" access="FIELD">
+    <entity class="Holiday" access="FIELD">
         <table name="holiday" schema="holiday"/>
         <attributes>
             <id name="id">
@@ -26,7 +26,7 @@
             </basic>
             <basic name="method">
                 <column name="method" column-definition="varchar(100)"/>
-                <convert converter="org.hgl.service.holiday.model.converter.HolidayCalculationMethodNameConverter"/>
+                <convert converter="org.hglteam.service.holiday.model.converter.HolidayCalculationMethodNameConverter"/>
             </basic>
             <basic name="argument">
                 <column name="argument" column-definition="json"/>

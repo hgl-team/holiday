@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.hgl.service</groupId>
+  <groupId>org.hglteam.service</groupId>
   <artifactId>holiday</artifactId>
   <version>1.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
@@ -16,7 +16,6 @@
     <servlet.port>51500</servlet.port>
     <docker.port>51500</docker.port>
     <docker.image.name>${project.name}</docker.image.name>
-    <cloud.config.url>https://dev.lujociclas.com/wap/configuracion</cloud.config.url>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -63,11 +62,15 @@
       </dependency>
       <!-- https://dev.lujociclas.com/archiva/#artifact/org.hgl/convertion-bom/1.0.1 -->
       <dependency>
-        <groupId>org.hgl</groupId>
-        <artifactId>convertion-bom</artifactId>
-        <version>1.0.1</version>
-        <type>pom</type>
-        <scope>import</scope>
+        <groupId>org.hglteam</groupId>
+        <artifactId>convertion-api</artifactId>
+        <version>1.0.3</version>
+      </dependency>
+      <!-- https://dev.lujociclas.com/archiva/#artifact/org.hgl/convertion-bom/1.0.1 -->
+      <dependency>
+        <groupId>org.hglteam</groupId>
+        <artifactId>convertion-core</artifactId>
+        <version>1.0.3</version>
       </dependency>
       <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
       <dependency>
@@ -110,13 +113,6 @@
         <groupId>org.flywaydb</groupId>
         <artifactId>flyway-core</artifactId>
         <version>6.4.4</version>
-      </dependency>
-      <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-      <dependency>
-        <groupId>org.projectlombok</groupId>
-        <artifactId>lombok</artifactId>
-        <version>1.18.10</version>
-        <scope>provided</scope>
       </dependency>
       <!-- https://mvnrepository.com/artifact/com.opentable.components/otj-pg-embedded -->
       <dependency>
@@ -208,14 +204,8 @@
         <servlet.port>51200</servlet.port>
         <cloud.profile>develop</cloud.profile>
         <cloud.config.label>latest</cloud.config.label>
-
-        <docker.host>http://192.168.1.67:2375</docker.host>
         <docker.port>51200</docker.port>
         <docker.image.name>${project.name}-dev</docker.image.name>
-
-        <tomcat.url>https://dev.lujociclas.com/manager/text</tomcat.url>
-        <tomcat.server.id>tomcat-develop-server</tomcat.server.id>
-        <tomcat.catalina.base>/usr/local/tomcat</tomcat.catalina.base>
       </properties>
     </profile>
     <profile>
@@ -223,10 +213,6 @@
       <properties>
         <cloud.profile>local</cloud.profile>
         <cloud.config.label>latest</cloud.config.label>
-        <docker.host>unix:///var/run/docker.sock</docker.host>
-
-        <tomcat.url>http://localhost:8080/manager/text</tomcat.url>
-        <tomcat.server.id>tomcat-local-server</tomcat.server.id>
       </properties>
     </profile>
     <profile>
@@ -234,31 +220,48 @@
       <properties>
         <cloud.profile>production</cloud.profile>
         <cloud.config.label>latest</cloud.config.label>
-        <cloud.config.url>https://ns.lujociclas.com/wap/configuracion</cloud.config.url>
-        <docker.host>http://ns.lujociclas.com:2375</docker.host>
-
-        <tomcat.url>https://ns.lujociclas.com/manager/text</tomcat.url>
-        <tomcat.server.id>tomcat-prod-server</tomcat.server.id>
-        <tomcat.catalina.base>/opt/apache/tomcat-prod</tomcat.catalina.base>
       </properties>
+    </profile>
+    <profile>
+      <id>archiva</id>
+      <properties>
+        <scm.connection>scm:git:https://dev.lujociclas.com/gitbucket/git/jlhuerfanor/holiday.git</scm.connection>
+        <scm.url>https://dev.lujociclas.com/gitbucket/jlhuerfanor/holiday</scm.url>
+        <scm.developerConnection>scm:git:https://dev.lujociclas.com/gitbucket/git/jlhuerfanor/holiday.git</scm.developerConnection>
+      </properties>
+      <distributionManagement>
+        <repository>
+          <id>internal</id>
+          <url>https://dev.lujociclas.com/archiva/repository/internal/</url>
+        </repository>
+        <snapshotRepository>
+          <id>snapshots</id>
+          <url>https://dev.lujociclas.com/archiva/repository/snapshots/</url>
+        </snapshotRepository>
+      </distributionManagement>
+    </profile>
+    <profile>
+      <id>github</id>
+      <properties>
+        <scm.connection>scm:git:https://github.com/hgl-team/holiday.git</scm.connection>
+        <scm.url>https://github.com/hgl-team/holiday</scm.url>
+        <scm.developerConnection>scm:git:https://github.com/hgl-team/holiday.git</scm.developerConnection>
+      </properties>
+      <distributionManagement>
+        <repository>
+          <id>github</id>
+          <name>GitHub hgl-team Apache Maven Packages</name>
+          <url>https://maven.pkg.github.com/hgl-team/holiday</url>
+        </repository>
+      </distributionManagement>
     </profile>
   </profiles>
   <scm>
-    <connection>scm:git:https://dev.lujociclas.com/gitbucket/git/jlhuerfanor/holiday.git</connection>
-    <url>https://dev.lujociclas.com/gitbucket/jlhuerfanor/holiday</url>
-    <developerConnection>scm:git:https://dev.lujociclas.com/gitbucket/git/jlhuerfanor/holiday.git</developerConnection>
+    <connection>${scm.connection}</connection>
+    <url>${scm.url}</url>
+    <developerConnection>${scm.developerConnection}</developerConnection>
     <tag>HEAD</tag>
   </scm>
-  <distributionManagement>
-    <repository>
-      <id>internal</id>
-      <url>https://dev.lujociclas.com/archiva/repository/internal/</url>
-    </repository>
-    <snapshotRepository>
-      <id>snapshots</id>
-      <url>https://dev.lujociclas.com/archiva/repository/snapshots/</url>
-    </snapshotRepository>
-  </distributionManagement>
   <modules>
     <module>holiday-model</module>
     <module>holiday-control</module>
