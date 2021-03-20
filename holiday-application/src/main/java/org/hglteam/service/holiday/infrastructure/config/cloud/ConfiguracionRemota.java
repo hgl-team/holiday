@@ -1,6 +1,6 @@
 package org.hglteam.service.holiday.infrastructure.config.cloud;
 
-import com.github.jlhuerfanor.config.remote.RemoteConfiguration;
+import org.hglteam.config.remote.RemoteConfiguration;
 import org.hglteam.service.holiday.infrastructure.YAMLPropertySourceFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

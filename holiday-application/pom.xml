@@ -108,7 +108,7 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.jlhuerfanor</groupId>
+            <groupId>org.hglteam</groupId>
             <artifactId>remote-config-core</artifactId>
         </dependency>
 
