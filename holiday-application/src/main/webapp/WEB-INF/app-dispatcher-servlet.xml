@@ -8,7 +8,7 @@
             http://www.springframework.org/schema/context/spring-context-4.3.xsd">
     <context:annotation-config/>
 
-    <context:component-scan base-package="org.hgl.service.holiday.infrastructure org.hgl.service.holiday.web.rest">
-        <context:exclude-filter type="regex" expression="org\.hgl\.service\.holiday\.infrastructure\.springboot\..*"/>
+    <context:component-scan base-package="org.hglteam.service.holiday.infrastructure org.hglteam.service.holiday.web.rest">
+        <context:exclude-filter type="regex" expression="org\.hglteam\.service\.holiday\.infrastructure\.springboot\..*"/>
     </context:component-scan>
 </beans>
