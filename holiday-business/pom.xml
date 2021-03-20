@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.hglteam.service</groupId>
         <artifactId>holiday</artifactId>
-        <version>1.0.1-SNAPSHOT</version>
+        <version>1.0.2-SNAPSHOT</version>
     </parent>
     <artifactId>holiday-business</artifactId>
     <packaging>jar</packaging>
@@ -12,14 +12,14 @@
         <dependency>
             <groupId>org.hglteam.service</groupId>
             <artifactId>holiday-model-domain</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
+            <version>1.0.2-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         
         <dependency>
             <groupId>org.hglteam.service</groupId>
             <artifactId>holiday-control-definitions</artifactId>
-            <version>1.0.1-SNAPSHOT</version>
+            <version>1.0.2-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
