@@ -286,6 +286,21 @@
             </properties>
         </profile>
         <profile>
+            <id>lujociclas</id>
+            <distributionManagement>
+                <repository>
+                    <id>central</id>
+                    <name>JFrog - lujociclas central repository</name>
+                    <url>https://lujociclas.jfrog.io/artifactory/lujociclas</url>
+                </repository>
+                <snapshotRepository>
+                    <id>snapshots</id>
+                    <name>JFrog - lujociclas snapshot repository</name>
+                    <url>https://lujociclas.jfrog.io/artifactory/lujociclas</url>
+                </snapshotRepository>
+            </distributionManagement>
+        </profile>
+        <profile>
             <id>github</id>
             <distributionManagement>
                 <repository>
