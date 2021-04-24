@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.hglteam.service</groupId>
         <artifactId>holiday</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
     </parent>
     <artifactId>holiday-application</artifactId>
     <packaging>war</packaging>
@@ -13,38 +13,38 @@
         <dependency>
             <groupId>org.hglteam.service</groupId>
             <artifactId>holiday-model-domain</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.hglteam.service</groupId>
             <artifactId>holiday-model-dto</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.hglteam.service</groupId>
             <artifactId>holiday-control-definitions</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.hglteam.service</groupId>
             <artifactId>holiday-control-adapters</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.hglteam.service</groupId>
             <artifactId>holiday-business</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.hglteam.service</groupId>
             <artifactId>holiday-adapter-web</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
             <type>war</type>
         </dependency>
         <dependency>
             <groupId>org.hglteam.service</groupId>
             <artifactId>holiday-adapter-rest</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
             <type>war</type>
         </dependency>
 
@@ -403,7 +403,7 @@
             </build>
         </profile>
         <profile>
-            <id>tomcat</id>
+            <id>wildfly</id>
             <dependencies>
                 <dependency>
                     <groupId>org.slf4j</groupId>
@@ -432,34 +432,37 @@
             <build>
                 <resources>
                     <resource>
-                        <directory>src/main/resources-tomcat</directory>
+                        <directory>src/main/resources-container</directory>
                         <filtering>true</filtering>
                     </resource>
                 </resources>
                 <plugins>
                     <plugin>
-                        <groupId>org.apache.tomcat.maven</groupId>
-                        <artifactId>tomcat7-maven-plugin</artifactId>
-                        <version>2.2</version>
+                        <groupId>org.wildfly.plugins</groupId>
+                        <artifactId>wildfly-maven-plugin</artifactId>
+                        <version>2.0.2.Final</version>
                         <configuration>
-                            <url>${tomcat.url}</url>
-                            <server>${tomcat.server.id}</server>
-                            <path>/wap/holiday</path>
+                            <id>${wildfly.server.id}</id>
+                            <hostname>${wildfly.hostname}</hostname>
+                            <port>${wildfly.port}</port>
                         </configuration>
                         <executions>
                             <execution>
-                                <id>undeploy</id>
-                                <phase>clean</phase>
-                                <goals>
-                                    <goal>undeploy</goal>
-                                </goals>
-                            </execution>
-                            <execution>
-                                <id>deploy</id>
+                                <id>deploy-artifact</id>
                                 <phase>install</phase>
                                 <goals>
                                     <goal>deploy</goal>
                                 </goals>
+                            </execution>
+                            <execution>
+                                <id>undeploy-artifact</id>
+                                <phase>clean</phase>
+                                <goals>
+                                    <goal>undeploy</goal>
+                                </goals>
+                                <configuration>
+                                    <ignoreMissingDeployment>true</ignoreMissingDeployment>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>

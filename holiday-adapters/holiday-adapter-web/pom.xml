@@ -4,7 +4,7 @@
     <parent>
         <groupId>org.hglteam.service</groupId>
         <artifactId>holiday-adapters</artifactId>
-        <version>1.0.1</version>
+        <version>1.0.2</version>
     </parent>
     <artifactId>holiday-adapter-web</artifactId>
     <packaging>war</packaging>
@@ -12,7 +12,7 @@
         <dependency>
             <groupId>org.hglteam.service</groupId>
             <artifactId>holiday-business</artifactId>
-            <version>1.0.1</version>
+            <version>1.0.2</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
