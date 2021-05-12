@@ -3,7 +3,6 @@ config:
     name: holiday
     profile: @cloud.profile@
     label: @cloud.config.label@
-    url: @cloud.config.url@
     retry: true
     read-timeout: 1000
     connect-timeout: 1000
