@@ -1,4 +1,4 @@
-package org.hglteam.service.holiday.infrastructure.convertion;
+package org.hglteam.service.holiday.infrastructure.platform.convertion;
 
 import org.hglteam.convertion.ConvertionContextMap;
 import org.hglteam.convertion.GenericConverter;

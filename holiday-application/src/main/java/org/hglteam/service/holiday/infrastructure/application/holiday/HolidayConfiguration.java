@@ -6,7 +6,7 @@ import org.hglteam.service.holiday.business.method.HolidayCalculatorBusiness;
 import org.hglteam.service.holiday.control.easter.EasterCalculator;
 import org.hglteam.service.holiday.control.holiday.HolidayQuery;
 import org.hglteam.service.holiday.control.holiday.HolidayQueryJpa;
-import org.hglteam.service.holiday.infrastructure.jpa.JpaConfiguration;
+import org.hglteam.service.holiday.infrastructure.platform.jpa.JpaConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

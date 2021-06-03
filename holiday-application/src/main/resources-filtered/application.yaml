@@ -15,6 +15,6 @@ spring:
       - "classpath:META-INF/db/migration"
     default-schema: holiday
 server:
-  port: @servlet.port@
+  port: @application.port@
   servlet:
-    context-path: /wap/holiday
+    context-path: @application.context-path@

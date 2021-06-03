@@ -1,4 +1,4 @@
-package org.hglteam.service.holiday.infrastructure.web.gson;
+package org.hglteam.service.holiday.infrastructure.platform.web.gson;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
