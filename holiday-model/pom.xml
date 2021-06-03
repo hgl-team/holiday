@@ -4,7 +4,7 @@
   <parent>
     <groupId>org.hglteam.service</groupId>
     <artifactId>holiday</artifactId>
-    <version>1.0.3-SNAPSHOT</version>
+    <version>1.0.4-SNAPSHOT</version>
   </parent>
   <artifactId>holiday-model</artifactId>
   <packaging>pom</packaging>
