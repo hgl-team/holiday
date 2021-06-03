@@ -1,4 +1,4 @@
-package org.hglteam.service.holiday.infrastructure.config.cloud;
+package org.hglteam.service.holiday.infrastructure.platform.config.cloud;
 
 import org.hglteam.service.holiday.infrastructure.YAMLPropertySourceFactory;
 import org.slf4j.Logger;

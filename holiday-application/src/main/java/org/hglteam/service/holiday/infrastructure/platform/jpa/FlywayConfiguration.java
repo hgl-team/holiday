@@ -1,4 +1,4 @@
-package org.hglteam.service.holiday.infrastructure.jpa;
+package org.hglteam.service.holiday.infrastructure.platform.jpa;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;

@@ -1,4 +1,4 @@
-package org.hglteam.service.holiday.infrastructure.jpa;
+package org.hglteam.service.holiday.infrastructure.platform.jpa;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

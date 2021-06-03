@@ -1,4 +1,4 @@
-package org.hglteam.service.holiday.infrastructure.web;
+package org.hglteam.service.holiday.infrastructure.platform.web;
 
 import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;

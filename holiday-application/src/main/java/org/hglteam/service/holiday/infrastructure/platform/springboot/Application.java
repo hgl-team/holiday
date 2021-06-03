@@ -1,6 +1,6 @@
-package org.hglteam.service.holiday.infrastructure.springboot;
+package org.hglteam.service.holiday.infrastructure.platform.springboot;
 
-import org.hglteam.service.holiday.infrastructure.config.cloud.ConfigurationInitializer;
+import org.hglteam.service.holiday.infrastructure.platform.config.cloud.ConfigurationInitializer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
