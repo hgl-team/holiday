@@ -1,4 +1,4 @@
-package org.hglteam.service.holiday.infrastructure.security;
+package org.hglteam.service.holiday.infrastructure.platform.web.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

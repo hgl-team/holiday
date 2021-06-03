@@ -1,7 +1,7 @@
-package org.hglteam.service.holiday.infrastructure.config;
+package org.hglteam.service.holiday.infrastructure.platform.config;
 
-import org.hglteam.service.holiday.infrastructure.jpa.DataSourceInformation;
-import org.hglteam.service.holiday.infrastructure.jpa.FlywayConfiguration;
+import org.hglteam.service.holiday.infrastructure.platform.jpa.DataSourceInformation;
+import org.hglteam.service.holiday.infrastructure.platform.jpa.FlywayConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

@@ -1,4 +1,4 @@
-package org.hglteam.service.holiday.infrastructure.web.gson;
+package org.hglteam.service.holiday.infrastructure.platform.web.gson;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.stream.JsonReader;
