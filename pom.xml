@@ -275,14 +275,14 @@
             <id>lujociclas</id>
             <distributionManagement>
                 <repository>
-                    <id>central</id>
-                    <name>JFrog - lujociclas central repository</name>
-                    <url>https://lujociclas.jfrog.io/artifactory/lujociclas</url>
+                    <id>internal</id>
+                    <name>Lujociclas central repository</name>
+                    <url>https://artifact.lujociclas.com/repository/internal/</url>
                 </repository>
                 <snapshotRepository>
                     <id>snapshots</id>
-                    <name>JFrog - lujociclas snapshot repository</name>
-                    <url>https://lujociclas.jfrog.io/artifactory/lujociclas</url>
+                    <name>Lujociclas central repository</name>
+                    <url>https://artifact.lujociclas.com/repository/snapshots/</url>
                 </snapshotRepository>
             </distributionManagement>
         </profile>
